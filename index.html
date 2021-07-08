@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/style.min.css" />
+    <link rel="stylesheet" href="style/all.min.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <form class="card__form form">
+          <div class="form__content">
+            <div class="form__elem elem">
+              <div class="elem__head">
+                <span class="elem__title">Info</span>
+              </div>
+              <div class="elem__description">
+                <span class="elem__text"> Enter your email address </span>
+              </div>
+              <input
+                type="text"
+                class="elem__input"
+                placeholder="team@checkforpatent.com"
+              />
+            </div>
+            <div class="form__elem elem elem__product">
+              <div class="elem__head">
+                <span class="elem__title"
+                  >Product <span class="elem__numb">1</span></span
+                >
+              </div>
+              <div class="elem__description">
+                <span class="elem__text">
+                  Enter main keyword for the product
+                </span>
+              </div>
+              <input
+                type="text"
+                class="elem__input"
+                placeholder="for example, sylicon wine cup"
+              />
+            </div>
+            <div class="form__elem elem elem__link">
+              <div class="elem__description">
+                <span class="elem__text">
+                  Enter link to the similar product as a reference
+                </span>
+              </div>
+              <input
+                type="text"
+                class="elem__input"
+                placeholder="https://..."
+              />
+            </div>
+            <div class="form__elem elem">
+              <div class="elem__head elem__head_add">
+                <span class="elem__title"
+                  >Add more products <i class="far fa-plus-circle _plus"></i
+                ></span>
+              </div>
+              <div class="elem__description">
+                <span class="elem__text">
+                  We offer discount up to 36% for multiple checks
+                </span>
+              </div>
+            </div>
+            <!-- <div class="form__elem elem">2</div>
+						<div class="form__elem" elem>3</div>
+						<div class="form__elem elem">4</div>
+						<div class="form__elem elem">5</div> -->
+          </div>
+
+          <div class="form__content form__product">
+            <div class="form__elem elem">
+              <div class="elem__head">
+                <span class="elem__title">Adding more products</span>
+              </div>
+              <div class="elem__description">
+                <span class="elem__text">
+                  The more items you check, the better the price.
+                </span>
+              </div>
+              <div class="elem__items">
+                <div id="5" class="elem__item item _active">
+                  <div class="item__btn">
+                    <div class="item__radio _active__btn"></div>
+                  </div>
+                  <div class="item__text">
+                    <span class="item__title"
+                      >5 products for 80 usd / 16$ for each</span
+                    >
+                    <span class="item__description _active__des"
+                      >You safe 36% on each patent check
+                    </span>
+                  </div>
+                </div>
+                <div id="4" class="elem__item item">
+                  <div class="item__btn">
+                    <div class="item__radio"></div>
+                  </div>
+                  <div class="item__text">
+                    <span class="item__title"
+                      >4 products for 72 usd / 18$ for each</span
+                    >
+                    <span class="item__description"
+                      >You safe 28% on each patent check
+                    </span>
+                  </div>
+                </div>
+                <div id="3" class="elem__item item">
+                  <div class="item__btn">
+                    <div class="item__radio"></div>
+                  </div>
+                  <div class="item__text">
+                    <span class="item__title"
+                      >3 products for 60 usd / 20$ for each</span
+                    >
+                    <span class="item__description"
+                      >You safe 20% on each patent check
+                    </span>
+                  </div>
+                </div>
+                <div id="2" class="elem__item item">
+                  <div class="item__btn">
+                    <div class="item__radio"></div>
+                  </div>
+                  <div class="item__text">
+                    <span class="item__title"
+                      >2 products for 44 usd / 22$ for each</span
+                    >
+                    <span class="item__description"
+                      >You safe 12% on each patent check
+                    </span>
+                  </div>
+                </div>
+                <div id="1" class="elem__item item">
+                  <div class="item__btn">
+                    <div class="item__radio"></div>
+                  </div>
+                  <div class="item__text">
+                    <span class="item__title">1 product for 24.99 usd</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="form__btn">
+            Submit and Pay <span class="btn__price">24.99</span> USD
+          </button>
+
+          <button class="form__btn btn-product">Continue</button>
+
+          <div class="form__footer">
+            <i class="fas fa-lock _lock"></i>Secure payment with Stripe
+          </div>
+        </form>
+      </div>
+      <div class="dots">
+        <img src="media/dots.svg" alt="dots" />
+      </div>
+    </div>
+  </body>
+  <script src="index.js"></script>
+</html>

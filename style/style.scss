@@ -1,0 +1,261 @@
+@import "_null";
+
+body {
+  background: #f4f5fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@font-face {
+  font-family: Gilroy_Bold; /* Имя шрифта */
+  src: url(/fonts/Gilroy-Bold.ttf); /* Путь к файлу со шрифтом */
+}
+
+@font-face {
+  font-family: Gilroy_Medium; /* Имя шрифта */
+  src: url(/fonts/Gilroy-Medium.ttf); /* Путь к файлу со шрифтом */
+}
+
+@font-face {
+  font-family: Gilroy_Semibold; /* Имя шрифта */
+  src: url(/fonts/Gilroy-Semibold.ttf); /* Путь к файлу со шрифтом */
+}
+
+input {
+  font-family: Gilroy_Medium;
+  line-height: 100%;
+  font-size: 16px;
+  width: 100%;
+  outline: none;
+}
+
+.container {
+  margin: 15px 15px 15px 15px;
+  position: relative;
+}
+
+.dots {
+  position: absolute;
+  top: -2.9%;
+  right: -7.6%;
+  z-index: -1;
+}
+
+._lock {
+  font-size: 11px;
+  margin-right: 3px;
+  color: #afb4cc;
+}
+
+._plus {
+  font-size: 14px;
+  margin-left: 3px;
+}
+
+._cross {
+  font-size: 13px;
+  color: #23c967;
+  margin-left: 5px;
+}
+
+.card {
+  max-width: 440px;
+  min-height: 535px;
+  max-height: 535px;
+  z-index: 10;
+  background: #fff;
+  border-radius: 0 50px 50px 50px;
+  padding: 35px 15px 35px 35px;
+  box-shadow: 10px 10px 60px 0px #e2e7ff;
+}
+
+.form {
+  overflow: hidden;
+
+  .form__content {
+    display: flex;
+    flex-direction: column;
+    overflow-y: visible;
+    min-height: 369px;
+    max-height: 369px;
+    padding-right: 20px;
+    // display: none;
+
+    &::-webkit-scrollbar-track {
+      background: #e1e3ee;
+      width: 4px;
+      border-radius: 15px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #23c967;
+      width: 4px;
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar {
+      width: 4px;
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-button {
+      display: none;
+    }
+  }
+
+  .form__btn {
+    background: #23c967;
+    padding: 11px 0;
+    width: 100%;
+    border: none;
+    border-radius: 15px;
+    font-family: Gilroy_Bold;
+    color: #fff;
+    margin-top: 19px;
+    font-size: 18px;
+    cursor: pointer;
+    // display: none;
+  }
+
+  .form__footer {
+    margin-top: 11px;
+    display: flex;
+    justify-content: center;
+    font-family: Gilroy_Medium;
+    font-size: 14px;
+    color: #afb4cc;
+    align-items: center;
+    // display: none;
+  }
+
+  .form__product {
+    display: none;
+    // display: block;
+    overflow-y: visible;
+  }
+
+  .btn-product {
+    // display: block;
+    display: none;
+  }
+}
+
+.elem {
+  .elem__head {
+    font-family: Gilroy_Bold;
+    line-height: 100%;
+    margin-bottom: 12px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+  }
+
+  .elem__description {
+    font-family: Gilroy_Medium;
+    line-height: 100%;
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+
+  .elem__head_add {
+    font-family: Gilroy_Semibold;
+    color: #23c967;
+    line-height: 100%;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  .elem__input {
+    border: none;
+    border-bottom: 1.5px solid #e1e3ee;
+    margin-bottom: 25px;
+  }
+  .elem__title {
+    display: flex;
+    align-items: center;
+  }
+
+  .elem__numb {
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////
+
+  .elem__items {
+    border: 1.5px solid #e1e3ee;
+    border-radius: 15px 15px 25px 25px;
+  }
+
+  .elem__item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1.5px solid #e1e3ee;
+    padding: 11px 0 11px 17px;
+
+    &:last-child {
+      border-bottom: none;
+      padding-top: 14px;
+      padding-bottom: 14px;
+      border-radius: 0 0 25px 25px;
+    }
+
+    &:first-child {
+      border-radius: 13px 13px 0 0;
+    }
+
+    .item__btn {
+      min-width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1.5px solid #e1e3ee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+    }
+
+    .item__radio {
+      min-width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: none;
+      background: #23c967;
+      display: none;
+    }
+
+    .item__text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .item__title {
+      font-family: Gilroy_Semibold;
+      font-size: 16px;
+      line-height: 100%;
+    }
+
+    .item__description {
+      font-family: Gilroy_Medium;
+      line-height: 100%;
+      font-size: 13px;
+      margin-top: 5px;
+      color: #a7a2cb;
+    }
+
+    &._active {
+      background: #f4f5fa;
+    }
+
+    ._active__btn {
+      display: block;
+    }
+
+    ._active__des {
+      color: #23c967;
+    }
+  }
+}
