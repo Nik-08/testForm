@@ -266,6 +266,5 @@ btnPay.addEventListener("click", (event) => {
   btnText.style.display = "block";
   window.history.pushState("object or string", "Title", url + "");
   formContent.style.overflowY = "visible";
-
   removeProducts();
 });
