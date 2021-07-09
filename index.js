@@ -19,6 +19,15 @@ let url = window.location.href;
 
 let arr = [],
   data = {};
+let postData = {};
+
+const getFormValues = () => {
+  const formElements = form.elements;
+  for (let i = 0; i < formElements.length; i++) {
+    if (formElements[i].id === "inp")
+      postData[formElements[i].name] = formElements[i].value;
+  }
+};
 
 const sendForm = () => {
   form.addEventListener("submit", (event) => {
@@ -26,64 +35,52 @@ const sendForm = () => {
     loader.style.display = "block";
     btnText.style.display = "none";
 
-    setTimeout(post, 1500);
-
-    function post() {
-      const formData = new FormData(form); // создали объект который считывает с формы
-      let body = {}; // записываем в объект
-      formData.forEach((val, key) => {
-        // перебираем массив
-        body[key] = val;
-      });
-      postData(body)
-        .then((request) => {
-          if (request.status !== 200) {
-            // проверяем статус
-            throw new Error("status network now 200");
-          }
-          successfulForm.style.display = "block";
-          formContent.style.display = "none";
-          formFooter.style.display = "none";
-          formBtn.style.display = "none";
-          btnPay.style.display = "block";
-          window.history.pushState(
-            "object or string",
-            "Title",
-            url + "&paymentsuccess"
-          );
-        })
-        .catch(() => {
-          failedForm.style.display = "block";
-          formContent.style.display = "none";
-          formFooter.style.display = "none";
-          formBtn.style.display = "none";
-          btnPay.style.display = "block";
-          btnPay.textContent = "Try to pay again";
-          btnPay.classList.add("_failed");
-          window.history.pushState(
-            "object or string",
-            "Title",
-            url + "&paymenterror"
-          );
-          console.log(url);
-        })
-        .finally(() => {
-          form.querySelectorAll("input").forEach((elem) => {
-            elem.value = "";
-          });
-        });
-    }
-  });
-
-  const postData = (body) => {
-    return fetch("server.php", {
-      method: "POST",
+    getFormValues();
+    fetch("https://reqres.in/api/users", {
       headers: {
+        "Access-Control-Allow-Origin": "*",
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(body),
-    });
-  };
+      method: "POST",
+      body: JSON.stringify(postData),
+    })
+      .then((res) => {
+        if (res.status < 400) {
+          return res.json();
+        }
+        throw new Error(res.statusText);
+      })
+      .then((data) => {
+        successfulForm.style.display = "block";
+        formContent.style.display = "none";
+        formFooter.style.display = "none";
+        formBtn.style.display = "none";
+        btnPay.style.display = "block";
+        window.history.pushState(
+          "object or string",
+          "Title",
+          url + "&paymentsuccess"
+        );
+        console.log(data);
+      })
+      .catch(function (res) {
+        failedForm.style.display = "block";
+        formContent.style.display = "none";
+        formFooter.style.display = "none";
+        formBtn.style.display = "none";
+        btnPay.style.display = "block";
+        btnPay.textContent = "Try to pay again";
+        btnPay.classList.add("_failed");
+        window.history.pushState(
+          "object or string",
+          "Title",
+          url + "&paymenterror"
+        );
+        console.log(res);
+      });
+    function post() {}
+  });
 };
 
 sendForm();
@@ -148,7 +145,7 @@ const selectProduct = () => {
             <span class="elem__title"
             >Product <span class="elem__numb">${
               index + 2
-            } <i class="far fa-times-circle _cross"></i></span></span
+            } </span><i class="far fa-times-circle _cross"></i></span
             >
             </div>
             <div class="elem__description">
@@ -157,6 +154,8 @@ const selectProduct = () => {
             </span>
             </div>
             <input
+            id="inp"
+            name="product${index + 2}"
             type="text"
             class="elem__input"
               placeholder="for example, sylicon wine cup"
@@ -168,6 +167,8 @@ const selectProduct = () => {
               </span>
             </div>
             <input
+              id="inp"
+              name="url${index + 2}"
               type="text"
               class="elem__input"
               placeholder="https://..."
@@ -178,7 +179,6 @@ const selectProduct = () => {
         }
 
         for (let i = 0; i < arr.length - 1; i++) {
-          // вставка на страницу
           elemProducts.appendChild(arr[i]);
         }
         formContent.style.overflowY = "scroll";
@@ -188,7 +188,6 @@ const selectProduct = () => {
 };
 
 const addMore = () => {
-  //добавить больше
   elemAdd.addEventListener("click", (event) => {
     formContent.style.display = "none";
     formFooter.style.display = "none";
@@ -204,7 +203,6 @@ addMore();
 const amountElements = () => {
   const elemProduct = document.querySelectorAll(".elem__product"),
     btnPrice = document.querySelector(".btn__price");
-  let elemNumb = document.querySelectorAll(".elem__numb");
 
   let array = [];
   elemProduct.forEach((e) => {
@@ -226,6 +224,13 @@ const amountElements = () => {
       default:
         btnPrice.textContent = "24.99";
     }
+  });
+  if (array.length === 1) {
+    formContent.style.overflowY = "visible";
+  }
+
+  array.forEach((item, i) => {
+    item.querySelector(".elem__numb").textContent = i + 1;
   });
 };
 
@@ -249,6 +254,7 @@ btnProduct.addEventListener("click", (event) => {
   formBtn.style.display = "block";
   formProduct.style.display = "none";
   btnProduct.style.display = "none";
+  getFormValues();
 
   removeProduct();
   amountElements();
@@ -266,5 +272,6 @@ btnPay.addEventListener("click", (event) => {
   btnText.style.display = "block";
   window.history.pushState("object or string", "Title", url + "");
   formContent.style.overflowY = "visible";
+  Object.values(form.elements).forEach((item) => (item.value = ""));
   removeProducts();
 });

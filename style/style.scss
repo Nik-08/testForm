@@ -26,6 +26,9 @@ input {
   top: -2.9%;
   right: -7.6%;
   z-index: -1;
+  @media (max-width: 500px) {
+    display: none;
+  }
 }
 
 ._lock {
@@ -288,6 +291,10 @@ input {
       font-size: 13px;
       margin-top: 5px;
       color: #a7a2cb;
+    }
+
+    &:hover {
+      background: #f4f5fa;
     }
 
     &._active {
