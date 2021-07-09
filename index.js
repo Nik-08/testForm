@@ -24,8 +24,9 @@ let postData = {};
 const getFormValues = () => {
   const formElements = form.elements;
   for (let i = 0; i < formElements.length; i++) {
-    if (formElements[i].id === "inp")
+    if (formElements[i].id === "inp") {
       postData[formElements[i].name] = formElements[i].value;
+    }
   }
 };
 
