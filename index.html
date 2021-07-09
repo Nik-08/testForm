@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style/style.min.css" />
     <link rel="stylesheet" href="style/all.min.css" />
+
     <title>Document</title>
   </head>
   <body>
     <div class="container">
       <div class="card">
-        <form class="card__form form">
+        <form class="card__form form" method="POST">
+          <!-- form__content -->
           <div class="form__content">
             <div class="form__elem elem">
               <div class="elem__head">
@@ -26,35 +28,38 @@
                 placeholder="team@checkforpatent.com"
               />
             </div>
-            <div class="form__elem elem elem__product">
-              <div class="elem__head">
-                <span class="elem__title"
-                  >Product <span class="elem__numb">1</span></span
-                >
+            <div class="form__elem elem elem__products">
+              <div class="elem__product">
+                <div class="elem__head">
+                  <span class="elem__title"
+                    >Product <span class="elem__numb">1</span></span
+                  >
+                </div>
+                <div class="elem__description">
+                  <span class="elem__text">
+                    Enter main keyword for the product
+                  </span>
+                </div>
+                <input
+                  type="text"
+                  class="elem__input"
+                  placeholder="for example, sylicon wine cup"
+                />
+                <div class="form__elem elem elem__link">
+                  <div class="elem__description">
+                    <span class="elem__text">
+                      Enter link to the similar product as a reference
+                    </span>
+                  </div>
+                  <input
+                    type="text"
+                    class="elem__input"
+                    placeholder="https://..."
+                  />
+                </div>
               </div>
-              <div class="elem__description">
-                <span class="elem__text">
-                  Enter main keyword for the product
-                </span>
-              </div>
-              <input
-                type="text"
-                class="elem__input"
-                placeholder="for example, sylicon wine cup"
-              />
             </div>
-            <div class="form__elem elem elem__link">
-              <div class="elem__description">
-                <span class="elem__text">
-                  Enter link to the similar product as a reference
-                </span>
-              </div>
-              <input
-                type="text"
-                class="elem__input"
-                placeholder="https://..."
-              />
-            </div>
+
             <div class="form__elem elem">
               <div class="elem__head elem__head_add">
                 <span class="elem__title"
@@ -72,7 +77,7 @@
 						<div class="form__elem elem">4</div>
 						<div class="form__elem elem">5</div> -->
           </div>
-
+          <!-- form__product -->
           <div class="form__content form__product">
             <div class="form__elem elem">
               <div class="elem__head">
@@ -84,15 +89,15 @@
                 </span>
               </div>
               <div class="elem__items">
-                <div id="5" class="elem__item item _active">
+                <div id="5" class="elem__item item">
                   <div class="item__btn">
-                    <div class="item__radio _active__btn"></div>
+                    <div class="item__radio"></div>
                   </div>
                   <div class="item__text">
                     <span class="item__title"
                       >5 products for 80 usd / 16$ for each</span
                     >
-                    <span class="item__description _active__des"
+                    <span class="item__description"
                       >You safe 36% on each patent check
                     </span>
                   </div>
@@ -147,12 +152,57 @@
               </div>
             </div>
           </div>
+          <!-- successful__form -->
+          <div class="successful__form form__content">
+            <div class="form__elem elem">
+              <div class="elem__head">
+                <span class="elem__title">Successfull payment </span>
+              </div>
+              <div class="elem__description">
+                <span class="elem__text">
+                  Your request has been accepted and will be processed within 24
+                  working hours. We will send you a payment details and all
+                  information to your email.
+                </span>
+              </div>
+
+              <img
+                class="elem__success elem__pay"
+                src="media/successPay.svg"
+                alt="success"
+              />
+            </div>
+          </div>
+
+          <div class="failed__form form__content">
+            <div class="form__elem elem">
+              <div class="elem__head">
+                <span class="elem__title">Your payment failed </span>
+              </div>
+              <div class="elem__description">
+                <span class="elem__text">
+                  Sorry, but we’ve having trouble processing your payment. You
+                  have been not charged for this transaction.
+                </span>
+              </div>
+
+              <img
+                class="elem__success elem__pay"
+                src="media/failedPay.svg"
+                alt="success"
+              />
+            </div>
+          </div>
 
           <button class="form__btn">
-            Submit and Pay <span class="btn__price">24.99</span> USD
+            <div class="btn__text">
+              Submit and Pay <span class="btn__price">24.99</span> USD
+            </div>
+            <div class="loader">Loading...</div>
           </button>
 
           <button class="form__btn btn-product">Continue</button>
+          <button class="form__btn btn-pay">Back</button>
 
           <div class="form__footer">
             <i class="fas fa-lock _lock"></i>Secure payment with Stripe
